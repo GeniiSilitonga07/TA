@@ -1,6 +1,23 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+  <NonVisualComponents>
+    <Container class="javax.swing.JScrollPane" name="jScrollPane2">
+      <AuxValues>
+        <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+      </AuxValues>
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+      <SubComponents>
+        <Component class="javax.swing.JTextArea" name="jTextArea1">
+          <Properties>
+            <Property name="columns" type="int" value="20"/>
+            <Property name="rows" type="int" value="5"/>
+          </Properties>
+        </Component>
+      </SubComponents>
+    </Container>
+  </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
   </Properties>
@@ -30,10 +47,10 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="jButtonViewClassAttribute" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="jButtonViewClassProperty" alignment="0" max="32767" attributes="0"/>
                                   <Component id="jButtonViewDimensionAttribute" max="32767" attributes="0"/>
                                   <Component id="jButtonViewFactDimension" max="32767" attributes="0"/>
-                                  <Component id="jButtonTransformtoSQL" max="32767" attributes="0"/>
+                                  <Component id="jButtonSelectFactDimension" alignment="1" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace pref="27" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
@@ -44,7 +61,7 @@
                           <Group type="102" attributes="0">
                               <Component id="jTextField1" max="32767" attributes="0"/>
                               <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
-                              <Component id="jButton1" min="-2" pref="156" max="-2" attributes="0"/>
+                              <Component id="jButtonBrowseFile" min="-2" pref="156" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace pref="20" max="32767" attributes="0"/>
@@ -64,7 +81,7 @@
               <Component id="jLabel1" min="-2" pref="24" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="jButton1" pref="0" max="32767" attributes="0"/>
+                  <Component id="jButtonBrowseFile" pref="0" max="32767" attributes="0"/>
                   <Component id="jTextField1" max="32767" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
@@ -72,17 +89,17 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Group type="102" attributes="0">
-                      <Component id="jButtonViewClassAttribute" min="-2" pref="35" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jButtonViewClassProperty" min="-2" pref="35" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="jButtonViewDimensionAttribute" min="-2" pref="36" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jButtonViewFactDimension" min="-2" pref="36" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jButtonTransformtoSQL" min="-2" pref="38" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="jButtonSelectFactDimension" min="-2" pref="36" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="jScrollPane1" max="32767" attributes="0"/>
+                  <Component id="jScrollPane1" min="-2" pref="172" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+              <EmptySpace pref="19" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -103,19 +120,19 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Verdana" size="14" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Transform OWL to SQL"/>
+        <Property name="text" type="java.lang.String" value="OWL2SQL"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton1">
+    <Component class="javax.swing.JButton" name="jButtonBrowseFile">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Verdana" size="11" style="0"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Browse OWL File"/>
-        <Property name="actionCommand" type="java.lang.String" value="btnBrowse"/>
+        <Property name="text" type="java.lang.String" value="Browse File"/>
+        <Property name="actionCommand" type="java.lang.String" value="btnBrowseFile"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonBrowseFile"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
@@ -142,13 +159,13 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JButton" name="jButtonViewClassAttribute">
+    <Component class="javax.swing.JButton" name="jButtonViewClassProperty">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Verdana" size="11" style="0"/>
         </Property>
         <Property name="text" type="java.lang.String" value="View Class and Property"/>
-        <Property name="actionCommand" type="java.lang.String" value="btnViewClassAttribute"/>
+        <Property name="actionCommand" type="java.lang.String" value="btnViewClassProperty"/>
         <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[205, 23]"/>
         </Property>
@@ -160,7 +177,7 @@
         </Property>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnViewClassAttribute"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnViewClassProperty"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButtonViewFactDimension">
@@ -169,22 +186,10 @@
           <Font name="Verdana" size="11" style="0"/>
         </Property>
         <Property name="text" type="java.lang.String" value="View Fact and Dimension"/>
-        <Property name="actionCommand" type="java.lang.String" value="btnViewFactDimension"/>
+        <Property name="actionCommand" type="java.lang.String" value="btnSelectFactDimension"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnViewFactDimension"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="jButtonTransformtoSQL">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Verdana" size="11" style="0"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Transform to SQL"/>
-        <Property name="actionCommand" type="java.lang.String" value="btnTransformtoSQL"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTransformtoSQL"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnViewtFactDimension"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButtonViewDimensionAttribute">
@@ -207,6 +212,22 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnViewDimensionAttribute"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="jButtonSelectFactDimension">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Verdana" size="11" style="0"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Select Fact and Dimension"/>
+        <Property name="actionCommand" type="java.lang.String" value="btnSelectFactDimension"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonSelectFactDimension"/>
+      </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableLocal" type="java.lang.Boolean" value="true"/>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="0"/>
+      </AuxValues>
     </Component>
   </SubComponents>
 </Form>
