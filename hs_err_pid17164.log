@@ -1,0 +1,206 @@
+#
+# There is insufficient memory for the Java Runtime Environment to continue.
+# Native memory allocation (mmap) failed to map 12884901888 bytes for Failed to commit area from 0x0000000500000000 to 0x0000000800000000 of length 12884901888.
+# Possible reasons:
+#   The system is out of physical RAM or swap space
+#   The process is running with CompressedOops enabled, and the Java Heap may be blocking the growth of the native heap
+# Possible solutions:
+#   Reduce memory load on the system
+#   Increase physical memory or swap space
+#   Check if swap backing store is full
+#   Decrease Java heap size (-Xmx/-Xms)
+#   Decrease number of Java threads
+#   Decrease Java thread stack sizes (-Xss)
+#   Set larger code cache with -XX:ReservedCodeCacheSize=
+# This output file may be truncated or incomplete.
+#
+#  Out of Memory Error (t:/workspace/open/src/hotspot/os/windows/os_windows.cpp:3301), pid=17164, tid=4312
+#
+# JRE version:  (13.0.1+9) (build )
+# Java VM: Java HotSpot(TM) 64-Bit Server VM (13.0.1+9, mixed mode, aot, sharing, tiered, compressed oops, g1 gc, windows-amd64)
+# No core dump will be written. Minidumps are not enabled by default on client versions of Windows
+#
+
+---------------  S U M M A R Y ------------
+
+Command Line: -Dfile.encoding=UTF-8 -Xms12288m --module-path=E:\Semester 8\TA2\OWLtoSQL\build\classes owltosql.DesktopAPP
+
+Host: Intel(R) Core(TM) i7-7700HQ CPU @ 2.80GHz, 8 cores, 15G,  Windows 10 , 64 bit Build 18362 (10.0.18362.900)
+Time: Sat Jul  4 00:34:41 2020 SE Asia Standard Time elapsed time: 0 seconds (0d 0h 0m 0s)
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x0000019defa41000):  JavaThread "Unknown thread" [_thread_in_vm, id=4312, stack(0x0000005e67700000,0x0000005e67800000)]
+
+Stack: [0x0000005e67700000,0x0000005e67800000]
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+V  [jvm.dll+0x626eca]
+V  [jvm.dll+0x772c6a]
+V  [jvm.dll+0x77441f]
+V  [jvm.dll+0x774a23]
+V  [jvm.dll+0x24da58]
+V  [jvm.dll+0x62438a]
+V  [jvm.dll+0x618f75]
+V  [jvm.dll+0x30c61c]
+V  [jvm.dll+0x30c452]
+V  [jvm.dll+0x311bc6]
+V  [jvm.dll+0x355ce6]
+V  [jvm.dll+0x3554c0]
+V  [jvm.dll+0x2e729a]
+V  [jvm.dll+0x2e8532]
+V  [jvm.dll+0x74fcd8]
+V  [jvm.dll+0x363739]
+V  [jvm.dll+0x732dc5]
+V  [jvm.dll+0x3ce2ef]
+V  [jvm.dll+0x3d0611]
+C  [jli.dll+0x51ff]
+C  [ucrtbase.dll+0x20e82]
+C  [KERNEL32.DLL+0x17bd4]
+C  [ntdll.dll+0x6ce51]
+
+
+---------------  P R O C E S S  ---------------
+
+Threads class SMR info:
+_java_thread_list=0x00007ff9a81846b8, length=0, elements={
+}
+
+Java Threads: ( => current thread )
+
+Other Threads:
+  0x0000019defae0000 GCTaskThread "GC Thread#0" [stack: 0x0000005e67800000,0x0000005e67900000] [id=10792]
+  0x0000019defaf9800 ConcurrentGCThread "G1 Main Marker" [stack: 0x0000005e67900000,0x0000005e67a00000] [id=5888]
+  0x0000019defafb800 ConcurrentGCThread "G1 Conc#0" [stack: 0x0000005e67a00000,0x0000005e67b00000] [id=12704]
+
+[error occurred during error reporting (printing all threads), id 0xc0000005, EXCEPTION_ACCESS_VIOLATION (0xc0000005) at pc=0x00007ff9a79b6f67]
+
+VM state:not at safepoint (not fully initialized)
+
+VM Mutex/Monitor currently owned by a thread:  ([mutex/lock_event])
+[0x0000019defa3e740] Heap_lock - owner thread: 0x0000019defa41000
+
+Heap address: 0x0000000500000000, size: 12288 MB, Compressed Oops mode: Non-zero based: 0x0000000500000000
+Narrow klass base: 0x0000000000000000, Narrow klass shift: 0
+
+GC Heap History (0 events):
+No events
+
+Deoptimization events (0 events):
+No events
+
+Classes unloaded (0 events):
+No events
+
+Classes redefined (0 events):
+No events
+
+Internal exceptions (0 events):
+No events
+
+Events (8 events):
+Event: 0.022 Loaded shared library C:\Program Files\Java\jdk-13.0.1\bin\zip.dll
+Event: 0.024 Loaded shared library C:\Program Files\Java\jdk-13.0.1\bin\jimage.dll
+Event: 0.026 Loading shared library C:\Program Files\Java\jdk-13.0.1\lib\libjava.base-coop.dll failed, error code 126
+Event: 0.026 Loading shared library C:\Program Files\Java\jdk-13.0.1\lib\libjava.logging-coop.dll failed, error code 126
+Event: 0.026 Loading shared library C:\Program Files\Java\jdk-13.0.1\lib\libjdk.compiler-coop.dll failed, error code 126
+Event: 0.026 Loading shared library C:\Program Files\Java\jdk-13.0.1\lib\libjdk.scripting.nashorn-coop.dll failed, error code 126
+Event: 0.026 Loading shared library C:\Program Files\Java\jdk-13.0.1\lib\libjdk.internal.vm.ci-coop.dll failed, error code 126
+Event: 0.026 Loading shared library C:\Program Files\Java\jdk-13.0.1\lib\libjdk.internal.vm.compiler-coop.dll failed, error code 126
+
+
+Dynamic libraries:
+0x00007ff7ae560000 - 0x00007ff7ae56f000 	C:\Program Files\Java\jdk-13.0.1\bin\java.exe
+0x00007ff9e8880000 - 0x00007ff9e8a70000 	C:\WINDOWS\SYSTEM32\ntdll.dll
+0x00007ff9e6cd0000 - 0x00007ff9e6d82000 	C:\WINDOWS\System32\KERNEL32.DLL
+0x00007ff9e6280000 - 0x00007ff9e6524000 	C:\WINDOWS\System32\KERNELBASE.dll
+0x00007ff9e6150000 - 0x00007ff9e624a000 	C:\WINDOWS\System32\ucrtbase.dll
+0x00007ff9d9c00000 - 0x00007ff9d9c18000 	C:\Program Files\Java\jdk-13.0.1\bin\jli.dll
+0x00007ff9de0e0000 - 0x00007ff9de0f5000 	C:\Program Files\Java\jdk-13.0.1\bin\VCRUNTIME140.dll
+0x00007ff9e69a0000 - 0x00007ff9e6a43000 	C:\WINDOWS\System32\ADVAPI32.dll
+0x00007ff9e87a0000 - 0x00007ff9e883e000 	C:\WINDOWS\System32\msvcrt.dll
+0x00007ff9e6c30000 - 0x00007ff9e6cc7000 	C:\WINDOWS\System32\sechost.dll
+0x00007ff9e7b50000 - 0x00007ff9e7c70000 	C:\WINDOWS\System32\RPCRT4.dll
+0x00007ff9e7e80000 - 0x00007ff9e8014000 	C:\WINDOWS\System32\USER32.dll
+0x00007ff9e68b0000 - 0x00007ff9e68d1000 	C:\WINDOWS\System32\win32u.dll
+0x00007ff9e8770000 - 0x00007ff9e8796000 	C:\WINDOWS\System32\GDI32.dll
+0x00007ff9ce1d0000 - 0x00007ff9ce454000 	C:\WINDOWS\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.18362.900_none_e6beb9d913147d17\COMCTL32.dll
+0x00007ff9e5810000 - 0x00007ff9e59a5000 	C:\WINDOWS\System32\gdi32full.dll
+0x00007ff9e6810000 - 0x00007ff9e68ae000 	C:\WINDOWS\System32\msvcp_win.dll
+0x00007ff9df580000 - 0x00007ff9df58a000 	C:\WINDOWS\SYSTEM32\VERSION.dll
+0x00007ff9e7730000 - 0x00007ff9e7a65000 	C:\WINDOWS\System32\combase.dll
+0x00007ff9e6790000 - 0x00007ff9e6810000 	C:\WINDOWS\System32\bcryptPrimitives.dll
+0x00007ff9e7a70000 - 0x00007ff9e7a9e000 	C:\WINDOWS\System32\IMM32.DLL
+0x00007ff9d9a80000 - 0x00007ff9d9b1b000 	C:\Program Files\Java\jdk-13.0.1\bin\msvcp140.dll
+0x00007ff9a76c0000 - 0x00007ff9a8226000 	C:\Program Files\Java\jdk-13.0.1\bin\server\jvm.dll
+0x00007ff9e38b0000 - 0x00007ff9e38d4000 	C:\WINDOWS\SYSTEM32\WINMM.dll
+0x00007ff9e6ba0000 - 0x00007ff9e6ba8000 	C:\WINDOWS\System32\PSAPI.DLL
+0x00007ff9cf860000 - 0x00007ff9cf869000 	C:\WINDOWS\SYSTEM32\WSOCK32.dll
+0x00007ff9e6930000 - 0x00007ff9e699f000 	C:\WINDOWS\System32\ws2_32.DLL
+0x00007ff9e3750000 - 0x00007ff9e377d000 	C:\WINDOWS\SYSTEM32\winmmbase.dll
+0x00007ff9e68e0000 - 0x00007ff9e692a000 	C:\WINDOWS\System32\cfgmgr32.dll
+0x00007ff9e5750000 - 0x00007ff9e5761000 	C:\WINDOWS\System32\kernel.appcore.dll
+0x00007ff9e3970000 - 0x00007ff9e3980000 	C:\Program Files\Java\jdk-13.0.1\bin\verify.dll
+0x00007ff9ce680000 - 0x00007ff9ce874000 	C:\WINDOWS\SYSTEM32\DBGHELP.DLL
+0x00007ff9ce8d0000 - 0x00007ff9ce8fa000 	C:\WINDOWS\SYSTEM32\dbgcore.DLL
+0x00007ff9de0b0000 - 0x00007ff9de0d6000 	C:\Program Files\Java\jdk-13.0.1\bin\java.dll
+0x00007ff9dca20000 - 0x00007ff9dca37000 	C:\Program Files\Java\jdk-13.0.1\bin\zip.dll
+0x00007ff9e1260000 - 0x00007ff9e126a000 	C:\Program Files\Java\jdk-13.0.1\bin\jimage.dll
+
+dbghelp: loaded successfully - version: 4.0.5 - missing functions: none
+symbol engine: initialized successfully - sym options: 0x614 - pdb path: .;C:\Program Files\Java\jdk-13.0.1\bin;C:\WINDOWS\SYSTEM32;C:\WINDOWS\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.18362.900_none_e6beb9d913147d17;C:\Program Files\Java\jdk-13.0.1\bin\server
+
+VM Arguments:
+jvm_args: -Dfile.encoding=UTF-8 -Xms12288m --module-path=E:\Semester 8\TA2\OWLtoSQL\build\classes 
+java_command: owltosql.DesktopAPP
+java_class_path (initial): E:\Semester 8\TA2\apache-jena-3.14.0\lib\collection-0.7.jar;E:\Semester 8\TA2\apache-jena-3.14.0\lib\commons-cli-1.4.jar;E:\Semester 8\TA2\apache-jena-3.14.0\lib\commons-codec-1.13.jar;E:\Semester 8\TA2\apache-jena-3.14.0\lib\commons-compress-1.19.jar;E:\Semester 8\TA2\apache-jena-3.14.0\lib\commons-csv-1.7.jar;E:\Semester 8\TA2\apache-jena-3.14.0\lib\commons-io-2.6.jar;E:\Semester 8\TA2\apache-jena-3.14.0\lib\commons-lang3-3.9.jar;E:\Semester 8\TA2\apache-jena-3.14.0\lib\httpclient-4.5.10.jar;E:\Semester 8\TA2\apache-jena-3.14.0\lib\httpclient-cache-4.5.10.jar;E:\Semester 8\TA2\apache-jena-3.14.0\lib\httpcore-4.4.12.jar;E:\Semester 8\TA2\apache-jena-3.14.0\lib\jackson-annotations-2.10.1.jar;E:\Semester 8\TA2\apache-jena-3.14.0\lib\jackson-core-2.10.1.jar;E:\Semester 8\TA2\apache-jena-3.14.0\lib\jackson-databind-2.10.1.jar;E:\Semester 8\TA2\apache-jena-3.14.0\lib\javax.annotation-api-1.3.2.jar;E:\Semester 8\TA2\apache-jena-3.14.0\lib\jcl-over-slf4j-1.7.26.jar;E:\Semester 8\TA2\apache-jena-3.14.0\lib\jena-arq-3.14.0.jar;E:\Semester 8\TA2\apache-jena-3.14.0\lib\jena-base-3.14.0.jar;E:\Semester 8\TA2\apache-jena-3.14.0\lib\jena-cmds-3.14.0.jar;E:\Semester 8\TA2\apache-jena-3.14.0\lib\jena-core-3.14.0.jar;E:\Semester 8\TA2\apache-jena-3.14.0\lib\jena-dboe-base-3.14.0.jar;E:\Semester 8\TA2\apache-jena-3.14.0\lib\jena-dboe-index-3.14.0.jar;E:\Semester 8\TA2\apache-jena-3.14.0\lib\jena-dboe-storage-3.14.0.jar;E:\Semester 8\TA2\apache-jena-3.14.0\lib\jena-dboe-trans-data-3.14.0.jar;E:\Semester 8\TA2\apache-jena-3.14.0\lib\jena-dboe-transaction-3.14.0.jar;E:\Semester 8\TA2\apache-jena-3.14.0\lib\jena-iri-3.14.0.jar;E:\Semester 8\TA2\apache-jena-3.14.0\lib\jena-rdfconnection-3.14.0.jar;E:\Semester 8\TA2\apache-jena-3.14.0\lib\jena-shacl-3.14.0.jar;E:\Semester 8\TA2\apache-jena-3.14.0\lib\jena-shaded-guava-3.14.0.jar;E:\Semester 8\TA2\apache-jena-3.14.0\lib\jena-tdb-3.14.0.jar;E:\Semester 8\TA2\apache-jena-3.14.0\lib\jena-tdb2-3.14.0.jar;E:\Semeste
+Launcher Type: SUN_STANDARD
+
+[Global flags]
+     intx CICompilerCount                          = 4                                         {product} {ergonomic}
+     uint ConcGCThreads                            = 2                                         {product} {ergonomic}
+     uint G1ConcRefinementThreads                  = 8                                         {product} {ergonomic}
+   size_t G1HeapRegionSize                         = 4194304                                   {product} {ergonomic}
+    uintx GCDrainStackTargetSize                   = 64                                        {product} {ergonomic}
+   size_t InitialHeapSize                          = 12884901888                               {product} {command line}
+   size_t MarkStackSize                            = 4194304                                   {product} {ergonomic}
+   size_t MaxHeapSize                              = 12884901888                               {product} {ergonomic}
+   size_t MinHeapDeltaBytes                        = 4194304                                   {product} {ergonomic}
+   size_t MinHeapSize                              = 12884901888                               {product} {command line}
+    uintx NonNMethodCodeHeapSize                   = 5836300                                {pd product} {ergonomic}
+    uintx NonProfiledCodeHeapSize                  = 122910970                              {pd product} {ergonomic}
+    uintx ProfiledCodeHeapSize                     = 122910970                              {pd product} {ergonomic}
+    uintx ReservedCodeCacheSize                    = 251658240                              {pd product} {ergonomic}
+     bool SegmentedCodeCache                       = true                                      {product} {ergonomic}
+   size_t SoftMaxHeapSize                          = 12884901888                            {manageable} {ergonomic}
+     bool UseCompressedClassPointers               = true                                 {lp64_product} {ergonomic}
+     bool UseCompressedOops                        = true                                 {lp64_product} {ergonomic}
+     bool UseG1GC                                  = true                                      {product} {ergonomic}
+     bool UseLargePagesIndividualAllocation        = false                                  {pd product} {ergonomic}
+
+Logging:
+Log output configuration:
+ #0: stdout all=warning uptime,level,tags
+ #1: stderr all=off uptime,level,tags
+
+Environment Variables:
+PATH=C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files\Git\cmd;C:\TDM-GCC-64\bin;C:\Program Files\Microsoft SQL Server\120\Tools\Binn\;C:\Users\Genii Silitonga\Anaconda3\Library\bin\graphviz;C:\Program Files\dotnet\;C:\Program Files\Java\jre1.8.0_231\bin;C:\Program Files\nodejs\;C:\xampp\php;C:\ProgramData\ComposerSetup\bin;C:\Users\Genii Silitonga\AppData\Local\Microsoft\WindowsApps;C:\Program Files\JetBrains\IntelliJ IDEA 2018.3.2\bin;;C:\Users\Genii Silitonga\AppData\Roaming\npm;C:\Users\Genii Silitonga\AppData\Roaming\Composer\vendor\bin
+USERNAME=Genii Silitonga
+OS=Windows_NT
+PROCESSOR_IDENTIFIER=Intel64 Family 6 Model 158 Stepping 9, GenuineIntel
+
+
+
+---------------  S Y S T E M  ---------------
+
+OS: Windows 10 , 64 bit Build 18362 (10.0.18362.900)
+
+CPU:total 8 (initial active 8) (4 cores per cpu, 2 threads per core) family 6 model 158 stepping 9, cmov, cx8, fxsr, mmx, sse, sse2, sse3, ssse3, sse4.1, sse4.2, popcnt, avx, avx2, aes, clmul, erms, 3dnowpref, lzcnt, ht, tsc, tscinvbit, bmi1, bmi2, adx, fma
+
+Memory: 4k page, system-wide physical 16268M (149M free)
+TotalPageFile size 23231M (AvailPageFile size 2937M)
+current process WorkingSet (physical memory assigned to process): 10M, peak: 10M
+current process commit charge ("private bytes"): 61M, peak: 12349M
+
+vm_info: Java HotSpot(TM) 64-Bit Server VM (13.0.1+9) for windows-amd64 JRE (13.0.1+9), built on Oct  6 2019 12:37:49 by "mach5one" with unknown MS VC++:1916
+
+END.
