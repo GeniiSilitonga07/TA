@@ -327,9 +327,9 @@ public class DesktopAPP extends javax.swing.JFrame {
     public String owlFactS[] = new String[55],
             owlFactAttributeS[][] = new String[55][500], 
             owlFactAttributeDTS[][][] = new String[55][500][500],
-            owlFactDimensionS[][] = new String[55][250],
-            owlFactDimensionAttrS[][][] = new String[55][250][400],
-            owlFactDimensionAttrDTS[][][][] = new String[55][250][400][400];
+            owlFactDimensionS[][] = new String[55][300],
+            owlFactDimensionAttrS[][][] = new String[55][300][400],
+            owlFactDimensionAttrDTS[][][][] = new String[55][300][400][400];
     
     public int counterFactS = 0, 
             counterFactAttrS = 0,  
@@ -422,12 +422,13 @@ public class DesktopAPP extends javax.swing.JFrame {
                                                     owlFactAttribute[counterFact][counterFactAttr] = owlDim.getLocalName()+"ID";
                                                     owlFactAttributeDT[counterFactAttr] = "int";
                                                     counterFactAttr++;
-                                                    counterFactAttrM++;
                                                     counterDimAttr++;
                                                 }
                                             }
                                         }
-                                        counterFactDim++;
+                                        if(counterDimAttr>0){
+                                            counterFactDim++;
+                                        }
                                     }else if(checkIfArrDimisntNull(owlFactDimension[counterFact])==true){
                                         if(checkIfExistDimension(owlFactDimension, owlProperty.getRange().getLocalName(), counterFact, counterFactDim)==false){
                                             owlFactDimension[counterFact][counterFactDim] = owlProperty.getRange().getLocalName();
@@ -453,12 +454,13 @@ public class DesktopAPP extends javax.swing.JFrame {
                                                         owlFactAttribute[counterFact][counterFactAttr] = owlDim.getLocalName()+"ID";
                                                         owlFactAttributeDT[counterFactAttr] = "int";
                                                         counterFactAttr++;
-                                                        counterFactAttrM++;
                                                         counterDimAttr++;
                                                     }
                                                 }
                                             }
-                                            counterFactDim++;
+                                            if(counterDimAttr>0){
+                                                counterFactDim++;
+                                            }
                                         }
                                     }
                                 }
@@ -676,12 +678,13 @@ public class DesktopAPP extends javax.swing.JFrame {
                                                     owlFactAttributeS[counterFactS][counterFactAttrS] = owlDim.getLocalName()+"ID";
                                                     owlFactAttributeDTS[counterFactS][counterFactAttrS][counterFactAttrS] = "int";
                                                     counterFactAttrS++;
-                                                    counterFactAttrMS++;
                                                     counterDimAttrS++;
                                                 }
                                             }
                                         }
-                                        counterFactDimS++;
+                                        if(counterDimAttrS>0){
+                                            counterFactDimS++;
+                                        }
                                     }else if(checkIfArrDimisntNull(owlFactDimensionS[counterFactS])==true){
                                         if(checkIfExistDimension(owlFactDimensionS, owlProperty.getRange().getLocalName(), counterFactS, counterFactDimS)==false){
                                             owlFactDimensionS[counterFactS][counterFactDimS] = owlProperty.getRange().getLocalName();
@@ -707,12 +710,13 @@ public class DesktopAPP extends javax.swing.JFrame {
                                                         owlFactAttributeS[counterFactS][counterFactAttrS] = owlDim.getLocalName()+"ID";
                                                         owlFactAttributeDTS[counterFactS][counterFactAttrS][counterFactAttrS] = "int";
                                                         counterFactAttrS++;
-                                                        counterFactAttrMS++;
                                                         counterDimAttrS++;
                                                     }
                                                 }
                                             }
-                                            counterFactDimS++;
+                                            if(counterDimAttrS>0){
+                                                counterFactDimS++;
+                                            }
                                         }
                                     }
                                 }
