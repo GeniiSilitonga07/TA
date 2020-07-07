@@ -324,12 +324,12 @@ public class DesktopAPP extends javax.swing.JFrame {
         return isExist;
     }
     
-    public String owlFactS[] = new String[55],
-            owlFactAttributeS[][] = new String[55][500], 
-            owlFactAttributeDTS[][][] = new String[55][500][500],
-            owlFactDimensionS[][] = new String[55][250],
-            owlFactDimensionAttrS[][][] = new String[55][250][400],
-            owlFactDimensionAttrDTS[][][][] = new String[55][250][400][400];
+    public String owlFactS[] = new String[100],
+            owlFactAttributeS[][] = new String[100][1500], 
+            owlFactAttributeDTS[][] = new String[100][1500],
+            owlFactDimensionS[][] = new String[100][1500],
+            owlFactDimensionAttrS[][][] = new String[100][1500][3000],
+            owlFactDimensionAttrDTS[][][] = new String[100][1500][3000];
     
     public int counterFactS = 0, 
             counterFactAttrS = 0,  
@@ -339,11 +339,7 @@ public class DesktopAPP extends javax.swing.JFrame {
             cA = 0,
             cB = 0,
             cC = 0,
-            cD = 0,
-            countAllFactS = 0,
-            countAllFactAttributeS = 0,
-            countAllFactDimensionS = 0,
-            countAllDimensionAttrS = 0;
+            cD = 0;
     
     private void btnViewtFactDimension(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewtFactDimension
         String owlFact[] = new String[100],
@@ -358,9 +354,6 @@ public class DesktopAPP extends javax.swing.JFrame {
         counterFactDim = 0,
         counterFactAttrM = 0,
         counterDimAttr=0,
-        countAllFact = 0,
-        countAllFactAttribute = 0,
-        countAllFactDimension = 0,
         countAllDimensionAttr = 0;
         
         OutputArea.setText(null);
@@ -637,28 +630,29 @@ public class DesktopAPP extends javax.swing.JFrame {
                         while(ontProperty.hasNext()){
                             OntProperty owlProperty = (OntProperty) ontProperty.next();
                             if(owlProperty.getLocalName()!=null){
+                                int countAllDimensionAttrS = 0;
                                 if(owlProperty.canAs(DatatypeProperty.class)&&owlProperty.getRange()!=null){
                                     if(checkIfFactAttrisntNull(owlFactAttributeS[counterFactS])==false){
                                         if(checkDataType(owlProperty.getRange().getLocalName())==true){
                                             owlFactAttributeS[counterFactS][counterFactAttrS] = owlProperty.getLocalName();
-                                            owlFactAttributeDTS[counterFactS][counterFactAttrS][counterFactAttrS] = owlProperty.getRange().getLocalName();
+                                            owlFactAttributeDTS[counterFactS][counterFactAttrS] = owlProperty.getRange().getLocalName();
                                             counterFactAttrMS++;
                                             counterFactAttrS++;
                                         }else{
                                             owlFactAttributeS[counterFactS][counterFactAttrS] = owlProperty.getLocalName();
-                                            owlFactAttributeDTS[counterFactS][counterFactAttrS][counterFactAttrS] = owlProperty.getRange().getLocalName();
+                                            owlFactAttributeDTS[counterFactS][counterFactAttrS] = owlProperty.getRange().getLocalName();
                                             counterFactAttrS++;
                                         } 
                                     }else if(checkIfFactAttrisntNull(owlFactAttributeS[counterFactS])==true){
                                         if(checkIfFactAttrExist(owlFactAttributeS, owlProperty.getLocalName(), counterFactS, counterFactAttrS)==false){
                                             if(checkDataType(owlProperty.getRange().getLocalName())==true){
                                                 owlFactAttributeS[counterFactS][counterFactAttrS] = owlProperty.getLocalName();
-                                                owlFactAttributeDTS[counterFactS][counterFactAttrS][counterFactAttrS] = owlProperty.getRange().getLocalName();
+                                                owlFactAttributeDTS[counterFactS][counterFactAttrS] = owlProperty.getRange().getLocalName();
                                                 counterFactAttrMS++;
                                                 counterFactAttrS++;
                                             }else{
                                                 owlFactAttributeS[counterFactS][counterFactAttrS] = owlProperty.getLocalName();
-                                                owlFactAttributeDTS[counterFactS][counterFactAttrS][counterFactAttrS] = owlProperty.getRange().getLocalName();
+                                                owlFactAttributeDTS[counterFactS][counterFactAttrS] = owlProperty.getRange().getLocalName();
                                                 counterFactAttrS++;
                                             }
                                         }
@@ -676,7 +670,7 @@ public class DesktopAPP extends javax.swing.JFrame {
                                                         if(owlDimProperty.getLocalName()!=null){
                                                             if(owlDimProperty.canAs(DatatypeProperty.class)&&owlDimProperty.getRange()!=null){
                                                                 owlFactDimensionAttrS[counterFactS][counterFactDimS][counterDimAttrS] = owlDimProperty.getLocalName();
-                                                                owlFactAttributeDTS[counterFactS][counterFactAttrS][counterFactAttrS] = owlDimProperty.getRange().getLocalName();
+                                                                owlFactAttributeDTS[counterFactS][counterFactAttrS] = owlDimProperty.getRange().getLocalName();
                                                                 countAllDimensionAttrS++;
                                                                 counterDimAttrS++;
                                                             }
@@ -685,9 +679,9 @@ public class DesktopAPP extends javax.swing.JFrame {
                                                     if(countAllDimensionAttrS>0){
                                                         owlFactDimensionS[counterFactS][counterFactDimS] = owlProperty.getRange().getLocalName();
                                                         owlFactDimensionAttrS[counterFactS][counterFactDimS][counterDimAttrS] = owlDim.getLocalName()+"ID";
-                                                        owlFactDimensionAttrDTS[counterFactS][counterFactDimS][counterDimAttrS][counterDimAttrS] = "int";
+                                                        owlFactDimensionAttrDTS[counterFactS][counterFactDimS][counterDimAttrS] = "int";
                                                         owlFactAttributeS[counterFactS][counterFactAttrS] = owlDim.getLocalName()+"ID";
-                                                        owlFactAttributeDTS[counterFactS][counterFactAttrS][counterFactAttrS] = "int";
+                                                        owlFactAttributeDTS[counterFactS][counterFactAttrS] = "int";
                                                         counterFactDimS++;
                                                         counterFactAttrS++;
                                                         counterDimAttrS++;
@@ -709,7 +703,7 @@ public class DesktopAPP extends javax.swing.JFrame {
                                                             if(owlDimProperty.getLocalName()!=null){
                                                                 if(owlDimProperty.canAs(DatatypeProperty.class)&&owlDimProperty.getRange()!=null){
                                                                     owlFactDimensionAttrS[counterFactS][counterFactDimS][counterDimAttrS] = owlDimProperty.getLocalName();
-                                                                    owlFactDimensionAttrDTS[counterFactS][counterFactDimS][counterDimAttrS][counterDimAttrS] = owlDimProperty.getRange().getLocalName();
+                                                                    owlFactDimensionAttrDTS[counterFactS][counterFactDimS][counterDimAttrS] = owlDimProperty.getRange().getLocalName();
                                                                     countAllDimensionAttrS++;
                                                                     counterDimAttrS++;
                                                                 }
@@ -718,9 +712,9 @@ public class DesktopAPP extends javax.swing.JFrame {
                                                         if(countAllDimensionAttrS>0){
                                                             owlFactDimensionS[counterFactS][counterFactDimS] = owlProperty.getRange().getLocalName();
                                                             owlFactDimensionAttrS[counterFactS][counterFactDimS][counterDimAttrS] = owlDim.getLocalName()+"ID";
-                                                            owlFactDimensionAttrDTS[counterFactS][counterFactDimS][counterDimAttrS][counterDimAttrS] = "int";
+                                                            owlFactDimensionAttrDTS[counterFactS][counterFactDimS][counterDimAttrS] = "int";
                                                             owlFactAttributeS[counterFactS][counterFactAttrS] = owlDim.getLocalName()+"ID";
-                                                            owlFactAttributeDTS[counterFactS][counterFactAttrS][counterFactAttrS] = "int";
+                                                            owlFactAttributeDTS[counterFactS][counterFactAttrS] = "int";
                                                             counterFactDimS++;
                                                             counterFactAttrS++;
                                                             counterDimAttrS++;
@@ -738,47 +732,47 @@ public class DesktopAPP extends javax.swing.JFrame {
                         if(counterFactAttrMS>0 && counterFactDimS>1){
                             owlFactS[counterFactS] = owlClass.getLocalName();
                             owlFactAttributeS[counterFactS][counterFactAttrS] = owlClass.getLocalName()+"ID";
-                            owlFactAttributeDTS[counterFactS][counterFactAttrS][counterFactAttrS] = "int";
+                            owlFactAttributeDTS[counterFactS][counterFactAttrS] = "int";
                             counterFactAttrMS++;
                             counterFactAttrS++;
                             
                             owlFactDimensionS[counterFactS][counterFactDimS] = "DimDate"; 
                             owlFactDimensionAttrS[counterFactS][counterFactDimS][counterDimAttrS] = "CalendarMonthNumberInYear";
-                            owlFactDimensionAttrDTS[counterFactS][counterFactDimS][counterDimAttrS][counterDimAttrS]= "dateTime";
+                            owlFactDimensionAttrDTS[counterFactS][counterFactDimS][counterDimAttrS]= "dateTime";
                             counterDimAttrS++;
                             owlFactDimensionAttrS[counterFactS][counterFactDimS][counterDimAttrS] = "DayNumberCalendarMonth";
-                            owlFactDimensionAttrDTS[counterFactS][counterFactDimS][counterDimAttrS][counterDimAttrS]= "dateTime";
+                            owlFactDimensionAttrDTS[counterFactS][counterFactDimS][counterDimAttrS]= "dateTime";
                             counterDimAttrS++;
                             owlFactDimensionAttrS[counterFactS][counterFactDimS][counterDimAttrS] = "DayOfWeek";
-                            owlFactDimensionAttrDTS[counterFactS][counterFactDimS][counterDimAttrS][counterDimAttrS]= "dateTime";
+                            owlFactDimensionAttrDTS[counterFactS][counterFactDimS][counterDimAttrS]= "dateTime";
                             counterDimAttrS++;
                             owlFactDimensionAttrS[counterFactS][counterFactDimS][counterDimAttrS] = "CalendarMonthName";
-                            owlFactDimensionAttrDTS[counterFactS][counterFactDimS][counterDimAttrS][counterDimAttrS]= "dateTime";
+                            owlFactDimensionAttrDTS[counterFactS][counterFactDimS][counterDimAttrS]= "dateTime";
                             counterDimAttrS++;
                             owlFactDimensionAttrS[counterFactS][counterFactDimS][counterDimAttrS] = "FullDateDescription";
-                            owlFactDimensionAttrDTS[counterFactS][counterFactDimS][counterDimAttrS][counterDimAttrS]= "dateTime";
+                            owlFactDimensionAttrDTS[counterFactS][counterFactDimS][counterDimAttrS]= "dateTime";
                             counterDimAttrS++;
                             owlFactDimensionAttrS[counterFactS][counterFactDimS][counterDimAttrS] = "LastDayInMonthIndicator";
-                            owlFactDimensionAttrDTS[counterFactS][counterFactDimS][counterDimAttrS][counterDimAttrS]= "dateTime";
+                            owlFactDimensionAttrDTS[counterFactS][counterFactDimS][counterDimAttrS]= "dateTime";
                             counterDimAttrS++;
                             owlFactDimensionAttrS[counterFactS][counterFactDimS][counterDimAttrS] = "CalendarWeekNumberInYear";
-                            owlFactDimensionAttrDTS[counterFactS][counterFactDimS][counterDimAttrS][counterDimAttrS]= "dateTime";
+                            owlFactDimensionAttrDTS[counterFactS][counterFactDimS][counterDimAttrS]= "dateTime";
                             counterDimAttrS++;
                             owlFactDimensionAttrS[counterFactS][counterFactDimS][counterDimAttrS] = "CalendarWeekEndingDate";
-                            owlFactDimensionAttrDTS[counterFactS][counterFactDimS][counterDimAttrS][counterDimAttrS]= "dateTime";
+                            owlFactDimensionAttrDTS[counterFactS][counterFactDimS][counterDimAttrS]= "dateTime";
                             counterDimAttrS++;
                             owlFactDimensionAttrS[counterFactS][counterFactDimS][counterDimAttrS] = "Date";
-                            owlFactDimensionAttrDTS[counterFactS][counterFactDimS][counterDimAttrS][counterDimAttrS]= "dateTime";
+                            owlFactDimensionAttrDTS[counterFactS][counterFactDimS][counterDimAttrS]= "dateTime";
                             counterDimAttrS++;
                             owlFactDimensionAttrS[counterFactS][counterFactDimS][counterDimAttrS] = "DayNumberCalendarYear";
-                            owlFactDimensionAttrDTS[counterFactS][counterFactDimS][counterDimAttrS][counterDimAttrS]= "dateTime";
+                            owlFactDimensionAttrDTS[counterFactS][counterFactDimS][counterDimAttrS]= "dateTime";
                             counterDimAttrS++;
                             owlFactDimensionAttrS[counterFactS][counterFactDimS][counterDimAttrS] = "DimDateID";
-                            owlFactDimensionAttrDTS[counterFactS][counterFactDimS][counterDimAttrS][counterDimAttrS] = "int";
+                            owlFactDimensionAttrDTS[counterFactS][counterFactDimS][counterDimAttrS] = "int";
                             counterDimAttrS++;
                             
                             owlFactAttributeS[counterFactS][counterFactAttrS] = "DimDateID";
-                            owlFactAttributeDTS[counterFactS][counterFactAttrS][counterFactAttrS] = "int";
+                            owlFactAttributeDTS[counterFactS][counterFactAttrS] = "int";
                             counterFactAttrS++;
                             counterFactAttrMS++;
                             counterFactDimS++;
@@ -789,6 +783,7 @@ public class DesktopAPP extends javax.swing.JFrame {
                     counterFactAttrS = 0;
                     counterFactAttrMS = 0;
                     counterFactDimS = 0;
+                    counterDimAttrS = 0;
                 }
             }catch (Exception e) { 
                 e.printStackTrace(); 
@@ -817,7 +812,7 @@ public class DesktopAPP extends javax.swing.JFrame {
                         FileWriter fw;    
                         try {
                             //writing file sql
-                            fw = new FileWriter("E:\\Semester 8\\TA2\\ConversionResult\\NewOWLTOSQL_"+owlFactS[flagFact]+".sql");
+                            fw = new FileWriter("E:\\Semester 8\\TA2\\ConversionResult\\owl2sql\\NewOWLTOSQL_"+owlFactS[flagFact]+".sql");
                             String new_db;
                             new_db = "NewOWLTOSQL_"+owlFactS[flagFact]+"_DB";
                             fw.write("DROP DATABASE IF EXISTS `"+new_db+"`;\n\n");
@@ -830,20 +825,20 @@ public class DesktopAPP extends javax.swing.JFrame {
                                     fw.write("\nCREATE TABLE `"+owlFactDimensionS[flagFact][i]+"`(\n");
                                     for(j=0; j<owlFactDimensionAttrS[flagFact][i].length; j++){
                                         if(owlFactDimensionAttrS[flagFact][i][j]!=null){
-                                            if("string".equals(owlFactDimensionAttrDTS[flagFact][i][j][j])|
-                                                    "String".equals(owlFactDimensionAttrDTS[flagFact][i][j][j])|
-                                                    "str".equals(owlFactDimensionAttrDTS[flagFact][i][j][j])|
-                                                    "Str".equals(owlFactDimensionAttrDTS[flagFact][i][j][j]))
+                                            if("string".equals(owlFactDimensionAttrDTS[flagFact][i][j])|
+                                                    "String".equals(owlFactDimensionAttrDTS[flagFact][i][j])|
+                                                    "str".equals(owlFactDimensionAttrDTS[flagFact][i][j])|
+                                                    "Str".equals(owlFactDimensionAttrDTS[flagFact][i][j]))
                                             {
                                                 fw.write("\t`"+owlFactDimensionAttrS[flagFact][i][j]+"` varchar(256)"+" NOT NULL,\n");
-                                            }else if("int".equals(owlFactDimensionAttrDTS[flagFact][i][j][j])|
-                                                    "Int".equals(owlFactDimensionAttrDTS[flagFact][i][j][j])|
-                                                    "integer".equals(owlFactDimensionAttrDTS[flagFact][i][j][j])|
-                                                    "Integer".equals(owlFactDimensionAttrDTS[flagFact][i][j][j]))
+                                            }else if("int".equals(owlFactDimensionAttrDTS[flagFact][i][j])|
+                                                    "Int".equals(owlFactDimensionAttrDTS[flagFact][i][j])|
+                                                    "integer".equals(owlFactDimensionAttrDTS[flagFact][i][j])|
+                                                    "Integer".equals(owlFactDimensionAttrDTS[flagFact][i][j]))
                                             {
                                                 fw.write("\t`"+owlFactDimensionAttrS[flagFact][i][j]+"` int(11)"+" NOT NULL,\n");
                                             }else{
-                                                fw.write("\t`"+owlFactDimensionAttrS[flagFact][i][j]+"` "+owlFactDimensionAttrDTS[flagFact][i][j][j]+" NOT NULL,\n");
+                                                fw.write("\t`"+owlFactDimensionAttrS[flagFact][i][j]+"` "+owlFactDimensionAttrDTS[flagFact][i][j]+" NOT NULL,\n");
                                             }
                                             cD++;
                                         }
@@ -858,20 +853,20 @@ public class DesktopAPP extends javax.swing.JFrame {
                             
                             for(i=0; i<owlFactAttributeS[flagFact].length; i++){
                                 if(owlFactAttributeS[flagFact][i]!=null){
-                                    if("string".equals(owlFactAttributeDTS[flagFact][i][i])|
-                                        "str".equals(owlFactAttributeDTS[flagFact][i][i])|
-                                        "String".equals(owlFactAttributeDTS[flagFact][i][i])|
-                                        "Str".equals(owlFactAttributeDTS[flagFact][i][i]))
+                                    if("string".equals(owlFactAttributeDTS[flagFact][i])|
+                                        "str".equals(owlFactAttributeDTS[flagFact][i])|
+                                        "String".equals(owlFactAttributeDTS[flagFact][i])|
+                                        "Str".equals(owlFactAttributeDTS[flagFact][i]))
                                     {
                                         fw.write("\t`" + owlFactAttributeS[flagFact][i] + "` varchar(256)" + " NOT NULL,\n");
-                                    }else if("int".equals(owlFactAttributeDTS[flagFact][i][i])|
-                                            "integer".equals(owlFactAttributeDTS[flagFact][i][i])|
-                                            "Int".equals(owlFactAttributeDTS[flagFact][i][i])|
-                                            "Integer".equals(owlFactAttributeDTS[flagFact][i][i]))
+                                    }else if("int".equals(owlFactAttributeDTS[flagFact][i])|
+                                            "integer".equals(owlFactAttributeDTS[flagFact][i])|
+                                            "Int".equals(owlFactAttributeDTS[flagFact][i])|
+                                            "Integer".equals(owlFactAttributeDTS[flagFact][i]))
                                     {
                                         fw.write("\t`" + owlFactAttributeS[flagFact][i] + "` int(11)" + " NOT NULL,\n");
                                     }else{
-                                        fw.write("\t`" + owlFactAttributeS[flagFact][i] + "` " + owlFactAttributeDTS[flagFact][i][i]+ " NOT NULL,\n");
+                                        fw.write("\t`" + owlFactAttributeS[flagFact][i] + "` " + owlFactAttributeDTS[flagFact][i]+ " NOT NULL,\n");
                                     }
                                     cA++;
                                 }
