@@ -495,7 +495,7 @@ public class DesktopAPP extends javax.swing.JFrame {
                                 }
                             }
                         }
-                        if(counterFactAttrM!=0 && counterFactDim>1){
+                        if(counterFactAttrM>0 && counterFactDim>1){
                             owlFact[counterFact] = owlClass.getLocalName();
                             
                             owlFactAttribute[counterFact][counterFactAttr] = owlClass.getLocalName()+"_FACT_ID";
