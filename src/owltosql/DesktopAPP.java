@@ -541,7 +541,7 @@ public class DesktopAPP extends javax.swing.JFrame {
                             owlFactDimensionAttrDT[counterFact][counterFactDim][counterDimAttr] = "int";
                             counterDimAttr++;
                             
-                            owlFactAttribute[counterFact][counterFactAttr] = "DimDateID";
+                            owlFactAttribute[counterFact][counterFactAttr] = "DimDateKey";
                             owlFactAttributeDT[counterFact][counterFactAttr] = "int";
                             counterFactAttr++;
                             counterFactAttrM++;
@@ -713,7 +713,7 @@ public class DesktopAPP extends javax.swing.JFrame {
                                                         owlFactDimensionAttrDTS[counterFactS][counterFactDimS][counterDimAttrS] = "int";
                                                         counterDimAttrS++;
 
-                                                        owlFactAttributeS[counterFactS][counterFactAttrS] = owlDim.getLocalName()+"ID";
+                                                        owlFactAttributeS[counterFactS][counterFactAttrS] = owlDim.getLocalName()+"Key";
                                                         owlFactAttributeDTS[counterFactS][counterFactAttrS] = "int";
                                                         counterFactAttrS++;
 
@@ -755,7 +755,7 @@ public class DesktopAPP extends javax.swing.JFrame {
                                                             owlFactDimensionAttrDTS[counterFactS][counterFactDimS][counterDimAttrS] = "int";
                                                             counterDimAttrS++;
 
-                                                            owlFactAttributeS[counterFactS][counterFactAttrS] = owlDim.getLocalName()+"ID";
+                                                            owlFactAttributeS[counterFactS][counterFactAttrS] = owlDim.getLocalName()+"Key";
                                                             owlFactAttributeDTS[counterFactS][counterFactAttrS] = "int";
                                                             counterFactAttrS++;
 
@@ -815,7 +815,7 @@ public class DesktopAPP extends javax.swing.JFrame {
                             owlFactDimensionAttrDTS[counterFactS][counterFactDimS][counterDimAttrS] = "int";
                             counterDimAttrS++;
                             
-                            owlFactAttributeS[counterFactS][counterFactAttrS] = "DimDateID";
+                            owlFactAttributeS[counterFactS][counterFactAttrS] = "DimDateKey";
                             owlFactAttributeDTS[counterFactS][counterFactAttrS] = "int";
                             counterFactAttrS++;
                             counterFactAttrMS++;
@@ -924,7 +924,7 @@ public class DesktopAPP extends javax.swing.JFrame {
                             }
                             
                             for(i=0; i<dim[flagFact].length; i++){
-                                int keyFlag=0, idFactFlag=0;
+                                int idFactFlag=0;
                                 if(dim[flagFact][i]!=null){
                                     fw.write("\nDROP TABLE IF EXISTS `"+ dim[flagFact][i]+"`;\n");
                                     fw.write("\nCREATE TABLE `"+dim[flagFact][i]+"`(\n");
@@ -932,18 +932,9 @@ public class DesktopAPP extends javax.swing.JFrame {
                                         if(dimAttr[flagFact][i][j]!=null&&dimAttrDT[flagFact][i][j]!=null){
                                             if(dimAttr[flagFact][i][j].equals(dim[flagFact][i]+"Key")){
                                                 fw.write("\t`"+dimAttr[flagFact][i][j]+"` "+dimAttrDT[flagFact][i][j]+" NOT NULL AUTO_INCREMENT,\n");
-                                                keyFlag=j;
+                                                idFactFlag=j;
                                             }else{
                                                 fw.write("\t`"+dimAttr[flagFact][i][j]+"` "+dimAttrDT[flagFact][i][j]+" NOT NULL,\n");
-                                            }
-                                        }
-                                    }
-                                    fw.write("\tKEY (`"+dimAttr[flagFact][i][keyFlag]+"`),\n");
-                                    
-                                    for(j=0; j<dimAttr[flagFact][i].length; j++){
-                                        if(dimAttr[flagFact][i][j]!=null&&dimAttrDT[flagFact][i][j]!=null){
-                                            if(dimAttr[flagFact][i][j].equals(dim[flagFact][i]+"ID")){
-                                                idFactFlag=j;
                                             }
                                         }
                                     }
@@ -1010,10 +1001,12 @@ public class DesktopAPP extends javax.swing.JFrame {
                                 if(dim[flagFact][i]!=null){
                                     for(j=0; j<dimAttr[flagFact][i].length; j++){
                                         if(dimAttr[flagFact][i][j]!=null){
-                                            cB++;
+                                            if(dimAttr[flagFact][i][j].equals(dim[flagFact][i]+"Key")){
+                                                cB=j;
+                                            }
                                         }
                                     }
-                                    fw.write("\tKEY "+ "`FK_" + owlFactS[flagFact]+(k++)+"` (`"+ dimAttr[flagFact][i][cB-1]+"`),\n");
+                                    fw.write("\tKEY "+ "`FK_" + owlFactS[flagFact]+(k++)+"` (`"+ dimAttr[flagFact][i][cB]+"`),\n");
                                 }
                             }
                             
@@ -1021,16 +1014,18 @@ public class DesktopAPP extends javax.swing.JFrame {
                                 if(dim[flagFact][i]!=null){
                                     for(j=0; j<dimAttr[flagFact][i].length; j++){
                                         if(dimAttr[flagFact][i][j]!=null){
-                                            cC++;
+                                            if(dimAttr[flagFact][i][j].equals(dim[flagFact][i]+"Key")){
+                                                cC=j;
+                                            }
                                         }
                                     }
                                     if(dim[flagFact][i+1]!=null){
-                                        fw.write("\tCONSTRAINT "+ "`FK_" + owlFactS[flagFact]+(l++)+"` FOREIGN KEY (`"+ dimAttr[flagFact][i][cC-1]+"`) "
-                                                + "REFERENCES `"+ dim[flagFact][i].toLowerCase()+"` (`"+ dimAttr[flagFact][i][cC-1]+ "`),\n");
+                                        fw.write("\tCONSTRAINT "+ "`FK_" + owlFactS[flagFact]+(l++)+"` FOREIGN KEY (`"+ dimAttr[flagFact][i][cC]+"`) "
+                                                + "REFERENCES `"+ dim[flagFact][i].toLowerCase()+"` (`"+ dimAttr[flagFact][i][cC]+ "`),\n");
                                     }
                                     else{
-                                        fw.write("\tCONSTRAINT "+ "`FK_" + owlFactS[flagFact]+(l++)+"` FOREIGN KEY (`"+ dimAttr[flagFact][i][cC-1]+"`) "
-                                                + "REFERENCES `"+ dim[flagFact][i].toLowerCase()+"` (`"+ dimAttr[flagFact][i][cC-1]+ "`)\n");
+                                        fw.write("\tCONSTRAINT "+ "`FK_" + owlFactS[flagFact]+(l++)+"` FOREIGN KEY (`"+ dimAttr[flagFact][i][cC]+"`) "
+                                                + "REFERENCES `"+ dim[flagFact][i].toLowerCase()+"` (`"+ dimAttr[flagFact][i][cC]+ "`)\n");
                                     }
                                 }
                                 
