@@ -123,7 +123,7 @@ public class DesktopAPP extends javax.swing.JFrame {
         });
 
         jButtonSelectFactDimension.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
-        jButtonSelectFactDimension.setText("Select Fact and Dimension");
+        jButtonSelectFactDimension.setText("Select Fact");
         jButtonSelectFactDimension.setActionCommand("btnSelectFactDimension");
         jButtonSelectFactDimension.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -356,7 +356,8 @@ public class DesktopAPP extends javax.swing.JFrame {
             owlFactAttributeDT[][] = new String[100][1500],
             owlFactDimension[][] = new String[100][1500],
             owlFactDimensionAttr[][][] = new String[100][1500][3000],
-            owlFactDimensionAttrDT[][][] = new String[100][1500][3000];
+            owlFactDimensionAttrDT[][][] = new String[100][1500][3000],
+            owlFactAttrDEF[][] = new String[100][1500];
   
         int counterFact = 0, 
             counterFactAttr = 0,  
@@ -438,10 +439,11 @@ public class DesktopAPP extends javax.swing.JFrame {
                                                         owlFactDimensionAttrDT[counterFact][counterFactDim][counterDimAttr] = "int";
                                                         counterDimAttr++;
 
-                                                        owlFactAttribute[counterFact][counterFactAttr] = owlDim.getLocalName()+"ID";
+                                                        owlFactAttribute[counterFact][counterFactAttr] = owlDim.getLocalName()+"Key";
                                                         owlFactAttributeDT[counterFact][counterFactAttr] = "int";
+                                                        owlFactAttrDEF[counterFact][counterFactAttr] = "(FK)";
                                                         counterFactAttr++;
-
+                                                        
                                                         counterFactDim++;
                                                     }
                                                     countAllDimAttr =0;
@@ -480,8 +482,9 @@ public class DesktopAPP extends javax.swing.JFrame {
                                                             owlFactDimensionAttrDT[counterFact][counterFactDim][counterDimAttr] = "int";
                                                             counterDimAttr++;
 
-                                                            owlFactAttribute[counterFact][counterFactAttr] = owlDim.getLocalName()+"ID";
+                                                            owlFactAttribute[counterFact][counterFactAttr] = owlDim.getLocalName()+"Key";
                                                             owlFactAttributeDT[counterFact][counterFactAttr] = "int";
+                                                            owlFactAttrDEF[counterFact][counterFactAttr] = "(FK)";
                                                             counterFactAttr++;
 
                                                             counterFactDim++;
@@ -500,6 +503,7 @@ public class DesktopAPP extends javax.swing.JFrame {
                             
                             owlFactAttribute[counterFact][counterFactAttr] = owlClass.getLocalName()+"_FACT_ID";
                             owlFactAttributeDT[counterFact][counterFactAttr] = "int";
+                            owlFactAttrDEF[counterFact][counterFactAttr] = "(PK)";
                             counterFactAttrM++;
                             counterFactAttr++;
                             
@@ -543,6 +547,7 @@ public class DesktopAPP extends javax.swing.JFrame {
                             
                             owlFactAttribute[counterFact][counterFactAttr] = "DimDateKey";
                             owlFactAttributeDT[counterFact][counterFactAttr] = "int";
+                            owlFactAttrDEF[counterFact][counterFactAttr] = "(FK)";
                             counterFactAttr++;
                             counterFactAttrM++;
                             counterFactDim++;
@@ -550,7 +555,9 @@ public class DesktopAPP extends javax.swing.JFrame {
                             OutputArea.append("Fact: " + owlFact[counterFact] + "\n");                            
                             int i, j, k;
                             for(i=0; i<counterFactAttr; i++){
-                                if(owlFactAttribute[counterFact][i]!=null){
+                                if(owlFactAttribute[counterFact][i]!=null&&owlFactAttributeDT[counterFact][i]!=null&&owlFactAttrDEF[counterFact][i]!=null){
+                                    OutputArea.append("-->Fact Attribute: "+ owlFactAttribute[counterFact][i] + "| "+ owlFactAttributeDT[counterFact][i]+ owlFactAttrDEF[counterFact][i]+"\n");
+                                }else{
                                     OutputArea.append("-->Fact Attribute: "+ owlFactAttribute[counterFact][i] + "| "+ owlFactAttributeDT[counterFact][i]+ "\n");
                                 }
                             }
@@ -559,7 +566,11 @@ public class DesktopAPP extends javax.swing.JFrame {
                                     OutputArea.append("---->Dimension: "+ owlFactDimension[counterFact][j] + "\n");
                                     for(k=0;k<counterDimAttr; k++){
                                         if(owlFactDimensionAttr[counterFact][j][k]!=null){
-                                            OutputArea.append("------>Dimension Attr: " + owlFactDimensionAttr[counterFact][j][k] + " | "+ owlFactDimensionAttrDT[counterFact][j][k]+ "\n");
+                                            if(owlFactDimensionAttr[counterFact][j][k].equals(owlFactDimension[counterFact][j]+"Key")){
+                                                OutputArea.append("------>Dimension Attr: " + owlFactDimensionAttr[counterFact][j][k] + " | "+ owlFactDimensionAttrDT[counterFact][j][k]+ "(PK)\n");
+                                            }else{
+                                                OutputArea.append("------>Dimension Attr: " + owlFactDimensionAttr[counterFact][j][k] + " | "+ owlFactDimensionAttrDT[counterFact][j][k]+ "\n");
+                                            }
                                         }
                                     }
                                 }
